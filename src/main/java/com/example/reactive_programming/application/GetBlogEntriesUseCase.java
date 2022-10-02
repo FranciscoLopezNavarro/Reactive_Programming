@@ -1,5 +1,6 @@
 package com.example.reactive_programming.application;
 
+import com.example.reactive_programming.application.dto.EntryDTO;
 import com.example.reactive_programming.domain.model.Entry;
 import com.example.reactive_programming.domain.ports.input.GetBlogEntries;
 import com.example.reactive_programming.domain.service.BlogDomainAPI;
@@ -18,7 +19,7 @@ public class GetBlogEntriesUseCase implements GetBlogEntries {
     }
 
     @Override
-    public Flux<Entry> execute() {
+    public Flux<EntryDTO> execute() {
         return blogService.getBlogEntries();
     }
 }

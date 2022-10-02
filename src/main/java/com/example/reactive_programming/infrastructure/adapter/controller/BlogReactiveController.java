@@ -1,5 +1,6 @@
 package com.example.reactive_programming.infrastructure.adapter.controller;
 
+import com.example.reactive_programming.application.dto.EntryDTO;
 import com.example.reactive_programming.domain.model.Entry;
 import com.example.reactive_programming.domain.ports.input.GetBlogEntries;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
 @RestController
-@RequestMapping("/blog")
+@RequestMapping("/entries")
 public class BlogReactiveController {
 
     private final GetBlogEntries getBlogEntries;
@@ -19,8 +20,8 @@ public class BlogReactiveController {
         this.getBlogEntries = getBlogEntries;
     }
 
-    @GetMapping("/entries")
-    public Flux<Entry> getCategories(){
+    @GetMapping
+    public Flux<EntryDTO> getCategories() {
         return getBlogEntries.execute();
     }
 }
